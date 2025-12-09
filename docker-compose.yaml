@@ -6,7 +6,7 @@ services:
         S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION:-v3.2.1.0}
         EASYTIER_VERSION: ${EASYTIER_VERSION:-v2.4.5}
         GOST_VERSION: ${GOST_VERSION:-3.2.6}
-    image: easytier-s6:latest
+    image: eric-gitta-moore/easytier-gost-s6:latest
     platform: linux/amd64
     environment:
       - TZ=Asia/Shanghai
