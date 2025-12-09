@@ -121,9 +121,6 @@ docker build -t easytier-s6:latest . \
 - 目标平台 `linux/amd64`。其他架构需调整 `Dockerfile` 中 s6-overlay 与二进制下载地址。
 - 时区默认 `Asia/Shanghai`，可通过环境变量 `TZ` 调整。
 
-## 贡献
-- 欢迎提交 Issue 与 PR，建议附带您使用的网络拓扑与期望的链路策略，以便讨论与调优。
-
 ## 致谢
 - [s6-overlay](https://github.com/just-containers/s6-overlay)
 - [EasyTier](https://github.com/EasyTier/EasyTier)
