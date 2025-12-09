@@ -1,0 +1,19 @@
+services:
+  easytier-s6:
+    build:
+      context: .
+      args:
+        S6_OVERLAY_VERSION: ${S6_OVERLAY_VERSION:-v3.2.1.0}
+        EASYTIER_VERSION: ${EASYTIER_VERSION:-v2.4.5}
+        GOST_VERSION: ${GOST_VERSION:-3.2.6}
+    image: easytier-s6:latest
+    platform: linux/amd64
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      # 作为入口， socks5://127.0.0.1:47897 -> gost:17897 -> (chain-0)hop0:12333 -> (chain-0)hop1:17897
+      - 127.0.0.1:47897:17897
+      # 作为出口， easytier本设备ip:1080 -> 本设备路由出口
+    volumes:
+      - ./rootfs/config:/config:ro
+    restart: unless-stopped

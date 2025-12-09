@@ -1,0 +1,3 @@
+#!/command/with-contenv sh
+set -e
+exec /usr/local/bin/easytier-core -c /config/config.toml

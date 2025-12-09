@@ -1,0 +1,22 @@
+instance_name = "steamtv"
+dhcp = true
+socks5_proxy = "socks5://0.0.0.0:12333"
+listeners = []
+rpc_portal = "0.0.0.0:0"
+
+[network_identity]
+network_name = "steamtv"
+network_secret = ""
+
+[[peer]]
+uri = "tcp://public.easytier.top:11010"
+
+[[peer]]
+uri = "tcp://public.easytier.cn:11010"
+
+[flags]
+no_tun = true
+enable_exit_node = true
+enable_kcp_proxy = true
+enable_quic_proxy = true
+use_smoltcp = true

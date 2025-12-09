@@ -1,0 +1,37 @@
+services:
+  - name: gost-out
+    addr: ":17897"
+    handler:
+      type: socks5
+      chain: chain-0
+    listener:
+      type: tcp
+  - name: gost-tun2socks
+    addr: ":1080"
+    handler:
+      type: socks5
+    listener:
+      type: tcp
+
+chains:
+  - name: chain-0
+    hops:
+      # 第一跳: -F socks5://127.0.0.1:12333
+      - name: hop-0
+        nodes:
+          - name: node-0
+            addr: "127.0.0.1:12333"
+            connector:
+              type: socks5
+            dialer:
+              type: tcp
+
+      # 第二跳: -F socks5://10.126.126.1:17897
+      - name: hop-1
+        nodes:
+          - name: node-1
+            addr: "10.126.126.1:17897"
+            connector:
+              type: socks5
+            dialer:
+              type: tcp
